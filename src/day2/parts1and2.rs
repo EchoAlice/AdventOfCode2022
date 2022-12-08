@@ -1,19 +1,5 @@
-#![allow(unused)]
-
 use std::str;
-use std::collections::HashMap;
-use std::ops::Index;
-use crate::helper::{read_to_bytes, print_type_of, read_lines};
-
-fn gather_input(path: &str) -> Vec<String> {
-    let mut input: Vec<String> = Vec::new(); 
-    if let Ok(lines) = read_lines(path){
-        for line in lines.flatten(){
-            input.push(line);
-        }
-    }
-    input
-}
+use crate::helper::{input_to_strings, read_to_bytes, print_type_of, read_lines};
 
 #[derive(Debug)]
 pub struct Shape {
@@ -103,7 +89,7 @@ fn part_2_round_logic(input: String) -> i32{
 }
 
 fn rock_paper_scissors() -> i32 {
-    let input = gather_input("src/day2/input.txt"); 
+    let input = input_to_strings("src/day2/input.txt"); 
     let mut total_score = 0; 
     for line in input {
         total_score += part_2_round_logic(line); 

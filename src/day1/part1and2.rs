@@ -1,4 +1,3 @@
-#![allow(unused)]
 // A file can be a module. 
 // Super allows you to access functionality from a parent module
 use std::str;

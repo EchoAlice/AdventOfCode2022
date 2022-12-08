@@ -37,3 +37,13 @@ where P: AsRef<Path>, {
     let file = File::open(filename)?;
     Ok(io::BufReader::new(file).lines())
 }
+
+pub fn input_to_strings(path: &str) -> Vec<String> {
+    let mut input: Vec<String> = Vec::new(); 
+    if let Ok(lines) = read_lines(path){
+        for line in lines.flatten(){
+            input.push(line);
+        }
+    }
+    input
+}
