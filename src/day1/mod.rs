@@ -1,1 +1,1 @@
-pub mod part1and2;
+pub mod main;

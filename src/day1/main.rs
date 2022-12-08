@@ -49,6 +49,6 @@ fn most_calories() -> (i32, i32) {
 Provide pub fn for other files to be able to come in and execute these functions
 */
 pub fn run_day1() -> (i32, i32) {
-    let (most_calories, top3) = crate::day1::part1and2::most_calories();
+    let (most_calories, top3) = crate::day1::main::most_calories();
     return (most_calories, top3);
 }
