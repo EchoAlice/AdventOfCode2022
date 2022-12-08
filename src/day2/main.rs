@@ -1,6 +1,6 @@
 use std::str;
 use crate::helper::{input_to_strings, read_to_bytes, print_type_of, read_lines};
-use crate::day2::shapes::{Shape, rock, paper, scissors};
+use crate::day2::shapes;
 
 
 // Uses enumerator to allow for chars and &strs to be used together within match 
@@ -9,11 +9,11 @@ enum Input<'a> {
     String(&'a str),
 }
 
-fn assign_shape_with_enum<'a> (move_input: &'a Input) -> Shape {
+fn assign_shape_with_enum<'a> (move_input: &'a Input) -> shapes::Shape {
     match move_input {
-        Input::String("rock") | Input::Character('A') | Input::Character('X') => rock(),
-        Input::String("paper") | Input::Character('B') | Input::Character('Y') => paper(),
-        _ => scissors(),
+        Input::String("rock") | Input::Character('A') | Input::Character('X') => shapes::rock(),
+        Input::String("paper") | Input::Character('B') | Input::Character('Y') => shapes::paper(),
+        _ => shapes::scissors(),
     }
 }
 
