@@ -9,7 +9,7 @@ enum Input<'a> {
     String(&'a str),
 }
 
-fn assign_shape_with_enum<'a> (move_input: &'a Input) -> shapes::Shape {
+fn assign_shape<'a> (move_input: &'a Input) -> shapes::Shape {
     match move_input {
         Input::String("rock") | Input::Character('A') | Input::Character('X') => shapes::rock(),
         Input::String("paper") | Input::Character('B') | Input::Character('Y') => shapes::paper(),
@@ -20,8 +20,8 @@ fn assign_shape_with_enum<'a> (move_input: &'a Input) -> shapes::Shape {
 // X, Y, and Z are rock, paper and scissors
 fn part_1_round_logic(input: String) -> i32{
     let mut round_score = 0; 
-    let opp_shape = assign_shape_with_enum(&Input::Character(input.chars().nth(0).unwrap()));
-    let my_shape = assign_shape_with_enum(&Input::Character(input.chars().nth(2).unwrap()));
+    let opp_shape = assign_shape(&Input::Character(input.chars().nth(0).unwrap()));
+    let my_shape = assign_shape(&Input::Character(input.chars().nth(2).unwrap()));
     round_score += my_shape.points;
     
     // Game logic.  Could match be use here with data structures?  
@@ -38,20 +38,20 @@ fn part_1_round_logic(input: String) -> i32{
 // X, Y, and Z are the needed outcomes: wins, ties, and losses
 fn part_2_round_logic(input: String) -> i32{
     let mut round_score = 0; 
-    let opp_shape = assign_shape_with_enum(&Input::Character(input.chars().nth(0).unwrap()));
+    let opp_shape = assign_shape(&Input::Character(input.chars().nth(0).unwrap()));
     let outcome = input.chars().nth(2).unwrap();
     
     if outcome == 'X' {
         // I must lose
-        let my_shape = assign_shape_with_enum(&Input::String(&opp_shape.beats));      
+        let my_shape = assign_shape(&Input::String(&opp_shape.beats));      
         round_score += my_shape.points;  
     } else if outcome == 'Y' {
         // I must tie 
-        let my_shape = assign_shape_with_enum(&Input::String(&opp_shape.ties));      
+        let my_shape = assign_shape(&Input::String(&opp_shape.ties));      
         round_score += my_shape.points + 3;
     } else {
         // I must win 
-        let my_shape = assign_shape_with_enum(&Input::String(&opp_shape.loses_to));      
+        let my_shape = assign_shape(&Input::String(&opp_shape.loses_to));      
         round_score += my_shape.points + 6;
     } 
     round_score

@@ -1,5 +1,3 @@
-// A file can be a module. 
-// Super allows you to access functionality from a parent module
 use std::str;
 use crate::helper::read_to_bytes;
 
@@ -7,6 +5,7 @@ fn gather_input(path: &str) -> Vec<i32> {
     let mut input: Vec<i32> = Vec::new(); 
     let data = read_to_bytes(path);
     let my_string = str::from_utf8(&data).unwrap(); 
+    
     // Hacky way to gather input.  I didn't use errors and substituted empty space with zeros...  Ask Leo what he did  
     for s in my_string.split_terminator("\r\n") {
         if s != ""{
