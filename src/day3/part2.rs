@@ -13,7 +13,6 @@ fn compare_types(c: char, other_elves: [&String; 2]) -> i32 {
         }
     }   
     if matches == 2 {
-        println!("Matching type: {}", c); 
         if c.is_lowercase() { 
             priority = (c.clone() as i32) - 96; 
         } else if c.is_uppercase() { 
